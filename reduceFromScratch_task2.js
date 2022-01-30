@@ -2,19 +2,19 @@
 // reduceFromScratch, которая принимает в себя функцию или условие, массив, аккумулятор
 
 let array = [1, 2, 3, 4, 5];
-let accumulator = 5;
+let accumulator = "";
 
-let getSum = (arr) => {
-	let sum = 0;
+let getString = (arr, accum) => {
+	let str = accum;
 	arr.forEach((item) => {
-		sum += item;
+		str += item;
 	});
-	return sum;
+	return str;
 };
 
 let reduceAnArray = (arr, accum) => {
-	let sum = getSum(arr);
-	return sum + accum;
+	let str = getString(arr, accum);
+	return str;
 };
 
 let reduceFromScratch = (funk, array, accumulator) => {
