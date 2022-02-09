@@ -1,14 +1,19 @@
 //Напишите функцию isEmpty(obj), которая принимает в себя объект и возвращает true, если у объекта нет свойств, иначе false.
 
+interface keyValue {
+    keyOne?: string;
+    keyTwo?: string;
+}
+
 // 1 - first way
 
-let emptyObj: object = {};
-let fullObj: object = {
+let emptyObj: keyValue = {};
+let fullObj: keyValue = {
 	keyOne: "valueOne",
 	keyTwo: "valueTwo",
 };
 
-const getEmptyObject = (obj: object): boolean => {
+const getEmptyObject = (obj: keyValue): boolean => {
 	if (Object.keys(obj).length > 0) {
 		return false;
 	} else {
@@ -21,12 +26,12 @@ console.log(getEmptyObject(fullObj)); //false because there are keys in the full
 
 // 2 - second way
 
-let emptyObj2: object = {};
-let fullObj2: object = {
+let emptyObj2: keyValue = {};
+let fullObj2: keyValue = {
 	keyOne: "valueOne",
 	keyTwo: "valueTwo",
 };
-const getEmptyObject2 = (obj: object): boolean => {
+const getEmptyObject2 = (obj: keyValue): boolean => {
 	for (let key in obj) {
 		return false;
 	}
