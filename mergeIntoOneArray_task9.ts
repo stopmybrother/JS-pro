@@ -40,3 +40,18 @@ const mergeIntoOneArray3 = (array: number[][]): number[] => {
 };
 
 console.log(mergeIntoOneArray3(arrays3)); // → [1, 2, 3, 4, 5, 6]
+
+// 4 - fourth way
+
+let arrays: number[][] = [[1, 2, 3], [4, 5], [6]];
+
+const mergeIntoOneArray = (array: number[][]):number[] => {
+	let newArray: number[] = array.reduce(
+		(accumulator, value) => accumulator.concat(...value),
+		[]
+	);
+
+	return newArray;
+};
+
+console.log(mergeIntoOneArray(arrays)); // → [1, 2, 3, 4, 5, 6]
