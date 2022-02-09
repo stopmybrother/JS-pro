@@ -17,7 +17,7 @@ console.log(getMinValue(a, b)); // 3
 let c: number = 15;
 let d: number = 7;
 
-const getMinValue2 = (firstValue: number, secondValue: number) => {
+const getMinValue2 = (firstValue: number, secondValue: number): number => {
 	if (firstValue > secondValue) {
 		return secondValue;
 	} else {
