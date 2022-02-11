@@ -5,12 +5,14 @@
 let str1: string = "кот";
 let str2: string = "ток";
 let str3: string = "отк";
+let str4: string = "оооооо"
 
 let checkWordsForAnagram = (...args: string[]): boolean => {
-	let array: string[] = [];
-	array.push(...args);
+	let array: string[] = [...args];
+    console.log(array)
+    let [firstValue]: string[] = array;
 
-	let str: string = array[0].split("").sort().join("");
+	let str: string = firstValue.split("").sort().join("");
 
 	for (let i: number = 1; i < array.length; i++) {
 		if (array[i].split("").sort().join("") !== str) {
@@ -22,3 +24,4 @@ let checkWordsForAnagram = (...args: string[]): boolean => {
 };
 
 console.log(checkWordsForAnagram(str1, str2, str3)); // true
+console.log(checkWordsForAnagram(str1, str2, str3, str4)); // false
