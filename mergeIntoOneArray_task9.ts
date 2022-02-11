@@ -2,21 +2,19 @@
 // Ваш код
 // → [1, 2, 3, 4, 5, 6]
 
-// 1 - first way
-
 let arrays: number[][] = [[1, 2, 3], [4, 5], [6]];
 
-const mergeIntoOneArray = (array: number[][]): number[] => {
+// 1 - first way - flat()
+
+const mergeIntoOneArray1 = (array: number[][]): number[] => {
 	let newArray: number[] = array.flat();
 
 	return newArray;
 };
 
-console.log(mergeIntoOneArray(arrays)); // → [1, 2, 3, 4, 5, 6]
+console.log(mergeIntoOneArray1(arrays)); // → [1, 2, 3, 4, 5, 6]
 
-// 2 - second way
-
-let arrays2: number[][] = [[1, 2, 3], [4, 5], [6]];
+// 2 - second way - reduce()
 
 const mergeIntoOneArray2 = (array: number[][]): number[] => {
 	let newArray: number[] = array.reduce(
@@ -27,11 +25,9 @@ const mergeIntoOneArray2 = (array: number[][]): number[] => {
 	return newArray;
 };
 
-console.log(mergeIntoOneArray2(arrays2)); // → [1, 2, 3, 4, 5, 6]
+console.log(mergeIntoOneArray2(arrays)); // → [1, 2, 3, 4, 5, 6]
 
-// 3 - third way
-
-let arrays3: number[][] = [[1, 2, 3], [4, 5], [6]];
+// 3 - third way - concat
 
 const mergeIntoOneArray3 = (array: number[][]): number[] => {
 	let newArray: number[] = [].concat(...array);
@@ -39,19 +35,17 @@ const mergeIntoOneArray3 = (array: number[][]): number[] => {
 	return newArray;
 };
 
-console.log(mergeIntoOneArray3(arrays3)); // → [1, 2, 3, 4, 5, 6]
+console.log(mergeIntoOneArray3(arrays)); // → [1, 2, 3, 4, 5, 6]
 
-// 4 - fourth way
+// 4 - fourth way - spread
 
-let arrays: number[][] = [[1, 2, 3], [4, 5], [6]];
-
-const mergeIntoOneArray = (array: number[][]):number[] => {
+const mergeIntoOneArray4 = (array: number[][]):number[] => {
 	let newArray: number[] = array.reduce(
-		(accumulator, value) => accumulator.concat(...value),
+		(accumulator, value) => (accumulator.push(...value), accumulator),
 		[]
 	);
 
 	return newArray;
 };
 
-console.log(mergeIntoOneArray(arrays)); // → [1, 2, 3, 4, 5, 6]
+console.log(mergeIntoOneArray4(arrays)); // → [1, 2, 3, 4, 5, 6]
