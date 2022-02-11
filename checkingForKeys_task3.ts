@@ -1,19 +1,18 @@
 //Напишите функцию isEmpty(obj), которая принимает в себя объект и возвращает true, если у объекта нет свойств, иначе false.
 
-interface keyValue {
-    keyOne?: string;
-    keyTwo?: string;
+interface IObj {
+	[key: string]: string;
 }
 
-// 1 - first way
-
-let emptyObj: keyValue = {};
-let fullObj: keyValue = {
+let emptyObj: IObj = {};
+let fullObj: IObj = {
 	keyOne: "valueOne",
 	keyTwo: "valueTwo",
 };
 
-const getEmptyObject = (obj: keyValue): boolean => {
+// 1 - first way
+
+const getEmptyObject1 = (obj: IObj): boolean => {
 	if (Object.keys(obj).length > 0) {
 		return false;
 	} else {
@@ -21,22 +20,17 @@ const getEmptyObject = (obj: keyValue): boolean => {
 	}
 };
 
-console.log(getEmptyObject(emptyObj)); //true because the emptyObj-object is empty
-console.log(getEmptyObject(fullObj)); //false because there are keys in the fullObj object
+console.log(getEmptyObject1(emptyObj)); //true because the emptyObj-object is empty
+console.log(getEmptyObject1(fullObj)); //false because there are keys in the fullObj object
 
 // 2 - second way
 
-let emptyObj2: keyValue = {};
-let fullObj2: keyValue = {
-	keyOne: "valueOne",
-	keyTwo: "valueTwo",
-};
-const getEmptyObject2 = (obj: keyValue): boolean => {
+const getEmptyObject2 = (obj: IObj): boolean => {
 	for (let key in obj) {
 		return false;
 	}
 	return true;
 };
 
-console.log(getEmptyObject2(emptyObj2)); //true because the emptyObj-object is empty
-console.log(getEmptyObject2(fullObj2)); //false because there are keys in the fullObj object
+console.log(getEmptyObject2(emptyObj)); //true because the emptyObj-object is empty
+console.log(getEmptyObject2(fullObj)); //false because there are keys in the fullObj object
