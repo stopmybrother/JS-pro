@@ -1,8 +1,7 @@
 const getRange = (startValue: number, endValue: number, ...step: number[]): number[] => {
 	let array: number[] = [];
-
 	let interval: number[] = step;
-	// console.log(arr[0]);
+
 	switch (true) {
 		case interval.length === 0:
 			for (let i:number = startValue; i <= endValue; i++) {
