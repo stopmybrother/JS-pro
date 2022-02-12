@@ -13,11 +13,7 @@ let fullObj: IObj = {
 // 1 - first way
 
 const getEmptyObject1 = (obj: IObj): boolean => {
-	if (Object.keys(obj).length > 0) {
-		return false;
-	} else {
-		return true;
-	}
+    return !Object.keys(obj).length;
 };
 
 console.log(getEmptyObject1(emptyObj)); //true because the emptyObj-object is empty
