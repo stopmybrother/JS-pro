@@ -30,7 +30,7 @@ console.log(mergeIntoOneArray2(arrays)); // → [1, 2, 3, 4, 5, 6]
 // 3 - third way - concat
 
 const mergeIntoOneArray3 = (array: number[][]): number[] => {
-	let newArray: number[] = [].concat(...array);
+	let newArray: number[] = [].concat(array);
 
 	return newArray;
 };
