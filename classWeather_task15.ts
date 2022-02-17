@@ -3,6 +3,7 @@ interface IWeather {
     temperature: number;
     pressure: number;
     humidity?: number;
+    getInfoAboutWeather(): void;
 }
 class Weather implements IWeather {
     temperature: number;
