@@ -46,54 +46,41 @@ const getNamesOfUsers = (array: IUser[]): string => {
 }
 console.log(getNamesOfUsers(users)); // "Harry Felton, May Sender, Henry Ford" 
 
-//     2. Подсчитать общее количество машин у пользователей - NEED TO FIX !!!!!!!
+//     2. Подсчитать общее количество машин у пользователей
 const getNumberOfCars = (array: IUser[]): number => {
-    let counter = 0;
-    let newArr: string[][] = [];
-    [...array].forEach((item: IUser) => {
+    let newArr: string[] = [...array].reduce((prev, item) => {
         if (item.cars) {
-            newArr.push(item.cars);
+            prev.push(item.cars);
         }
-    });
-
-    newArr.forEach((item: string[]) => {
-        counter = counter + item.length;
-    })
-    return counter;
+        return prev.flat();
+    }, [])
+    return (newArr.length);
 }
 console.log(getNumberOfCars(users)); // 3
 
 //     3. Создать функцию, которая бы принимала массив пользователей и отфильтровывала пользователей на наличие образования
 const getUsersWithAducation = (array: IUser[]): IUser[] => {
-    let newArr:IUser[] = [...array].filter((item: IUser) => item.hasEducation);
-    return newArr;
+    return [...array].filter((item: IUser) => item.hasEducation);
 }
 console.log(getUsersWithAducation(users));
 
-//     4. Создать функцию, которая бы принимала массив пользователей и отфильтровывала пользователей на наличие животных -  - NEED TO FIX !!!!!!!
+//     4. Создать функцию, которая бы принимала массив пользователей и отфильтровывала пользователей на наличие животных
 const getUsersWithPets = (array: IUser[]): IUser[] => {
-    let newArr:IUser[] = [...array].filter((item: IUser) => item.animals);
-    return newArr;
+    return [...array].filter((item: IUser) => item.animals);
 }
 console.log(getUsersWithPets(users));
 
 //     5. Создать функцию, которая бы принимала массив пользователей и отдавала бы  строку с названиями марок автомобилей через запятую
 
 const getCarsOfUsers = (array: IUser[]): string => {
-    let newArrOfArr: string[][] = [];
-
-    [...array].forEach((item: IUser) => {
-        if (item.cars) {
-            newArrOfArr.push(item.cars);
-        }
-    }); // [["bmw"], ["bmw", "audi"]] 
-
-    let arrOfAllCars: string[] = newArrOfArr.reduce((accumulator: string[], value: string[]) => accumulator.concat(value),[]); // ["bmw", "bmw", "audi"]
-    
-    let arrOfUniqCars: string[] = arrOfAllCars.filter((item: string, index: number) => arrOfAllCars.indexOf(item) === index); // ["bmw", "audi"] 
-    
-    let strOfUniqCars = arrOfUniqCars.join(", ");
-    
-    return strOfUniqCars; // "bmw, audi" 
+    let strOfUniqCars: string = [...array].reduce((prev, item) => {
+            if (item.cars) {
+                prev.push(item.cars);
+            }
+            return prev.flat();
+        }, [])
+        .filter((item: string, index: number, array) => array.indexOf(item) === index)
+        .join(", ")
+    return strOfUniqCars;
 }
 console.log(getCarsOfUsers(users));
