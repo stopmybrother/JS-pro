@@ -21,11 +21,11 @@ let arr: IWithExtraProp[] = [
         age: 35,
     }
 ];
-function deleteKeyFromObj<A, B>(array: A[]): B[] {
-    let newArray: B[] = [...array].map((item: A): B => {
+function deleteKeyFromObj<A>(array: A[]): IWithoutAge[] {
+    let newArray: IWithoutAge[] = [...array].map((item: A): IWithoutAge => {
         delete item.age;
         return item;
     })
     return newArray;
 }
-console.log(deleteKeyFromObj<IWithExtraProp, IWithoutAge>(arr)); // [{"name": "Kenny"}, {"name": "Brad"}, {"name": "Pit"}] 
+console.log(deleteKeyFromObj<IWithExtraProp>(arr)); // [{"name": "Kenny"}, {"name": "Brad"}, {"name": "Pit"}] 
