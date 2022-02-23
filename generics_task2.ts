@@ -6,7 +6,7 @@ const arr1: TNumber[] = [1, 2, 3];
 const arr2: TString[] = ["dfff", "222"];
 
 function getArrayReverse<T> (array: T[]): T[] {
-    let newArr: T[] = array.reverse();
+    let newArr: T[] = [...array].reverse();
     return newArr;
 };
 
