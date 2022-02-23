@@ -41,12 +41,11 @@ const users: IUser[] = [
 //     1. Создать строку из имен пользователей через запятую
 const getNamesOfUsers = (array: IUser[]): string => {
     let newArr = [...array].map((item: IUser) => item.name);
-    let str: string = newArr.join(", ");
-    return str;
+    return newArr.join(", ");
 }
 console.log(getNamesOfUsers(users)); // "Harry Felton, May Sender, Henry Ford" 
 
-//     2. Подсчитать общее количество машин у пользователей
+//     2. Подсчитать общее количество машин у пользователей !!!!!!!!
 const getNumberOfCars = (array: IUser[]): number => {
     let newArr: string[] = [...array].reduce((prev, item) => {
         if (item.cars) {
@@ -70,7 +69,7 @@ const getUsersWithPets = (array: IUser[]): IUser[] => {
 }
 console.log(getUsersWithPets(users));
 
-//     5. Создать функцию, которая бы принимала массив пользователей и отдавала бы  строку с названиями марок автомобилей через запятую
+//     5. Создать функцию, которая бы принимала массив пользователей и отдавала бы  строку с названиями марок автомобилей через запятую !!!!!!!!!!!
 
 const getCarsOfUsers = (array: IUser[]): string => {
     let strOfUniqCars: string = [...array].reduce((prev, item) => {
