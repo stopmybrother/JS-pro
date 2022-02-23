@@ -31,7 +31,7 @@ let obj3: IObject3 = {
 let str3: string = "professionn";
 
 
-function checkKey<T> (obj: T, str: string): boolean {
+function checkKey<T extends Record<string, any>, K extends keyof T> (obj: T, str: K): boolean {
     for (let key in obj) {
         if (key === str) {
             return true;
@@ -39,6 +39,6 @@ function checkKey<T> (obj: T, str: string): boolean {
     }
     return false;
 };
-console.log(checkKey<IObject1 | IObject2 | IObject3>(obj1, str1)); // true
-console.log(checkKey<IObject1 | IObject2 | IObject3>(obj2, str2)); // false
-console.log(checkKey<IObject1 | IObject2 | IObject3>(obj3, str3)); // false
+console.log(checkKey<IObject1, any>(obj1, str1)); // true
+console.log(checkKey<IObject2, any>(obj2, str2)); // false
+console.log(checkKey<IObject3, any>(obj3, str3)); // false
