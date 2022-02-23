@@ -1,5 +1,4 @@
 // 8) написать функцию, которая ищет ключ по свойству
-type TSring = string;
 interface IObject {
     name: string;
     surname: string;
@@ -16,15 +15,15 @@ let object2: IObject = {
     children: false,
 };
 
-function findKey<T, S> (obj: T, value: string | number | boolean): S {
-    let newObj: T = Object.assign(obj, {});
-    for (let key in newObj) {
-        if (newObj[key] === value) {
+function findKey<T, S extends T[keyof T]> (obj: T, value: S): keyof T | T {
+    for (let key in obj) {
+        if (obj[key] === value) {
             return key;
         }
     }
+    return obj;
 };
-console.log(findKey<IObject, TSring>(object2, 24)); // age
-console.log(findKey<IObject, TSring>(object2, "Swon")); // surname
-console.log(findKey<IObject, TSring>(object2, false)); // children
-console.log(findKey<IObject, TSring>(object2, true)); // undefined
+console.log(findKey<IObject, IObject[keyof IObject]>(object2, 24)); // age
+console.log(findKey<IObject, IObject[keyof IObject]>(object2, "Swon")); // surname
+console.log(findKey<IObject, IObject[keyof IObject]>(object2, false)); // children
+console.log(findKey<IObject, IObject[keyof IObject]>(object2, true));
