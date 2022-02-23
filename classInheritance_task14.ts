@@ -26,7 +26,6 @@ class Child extends Person {
         this.age = age;
         this.school = school;
         this.gender = gender;
-        Child.ageOfGraduation = ageOfGraduation;
     }
     printInfo(): void {
         if (this.gender === Gender.male) {
@@ -65,7 +64,6 @@ class Adult extends Person {
         this.age = age;
         this.work = work;
         this.gender = gender;
-        Adult.ageOfRetirement = ageOfRetirement;
     }
     printInfo(): void {
         if (this.gender === Gender.male) {
