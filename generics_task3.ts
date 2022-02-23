@@ -12,12 +12,12 @@ const obj: IObj = {
     animals: "dog",
 };
 
-function getKeys<O, A>(obj: O): A {
-    let arr: A = [];
+function getKeys<O>(obj: O): TArray {
+    let arr: TArray = [];
     for (let key in obj) {
         arr.push(key);
     };
     return arr;
 }
 
-console.log(getKeys<IObj, TArray>(obj));
+console.log(getKeys<IObj>(obj));
