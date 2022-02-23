@@ -18,8 +18,8 @@ let object: IObject = {
     children: false,
 };
 
-function changeValue<T> (obj: T, key: string, value: string | number | boolean): T {
-    let arr: TArr = Object.entries(obj).map((item, index) => {
+function changeValue<T extends Record<string, any>> (obj: T, key: keyof T, value: T[keyof T]): T {
+    let arr: TArr = Object.entries(obj).map((item) => {
         if (item[0] === key && typeof item[1] === typeof value) {
             item[1] = value;
         }
@@ -28,5 +28,6 @@ function changeValue<T> (obj: T, key: string, value: string | number | boolean):
     let newObj = Object.fromEntries(arr);
     return newObj
 };
+
 console.log(changeValue<IObject>(object, "children", true)); // {"name": "Patric", "surname": "Swon", "age": 24, "gender": "Male", "children": true}
 console.log(changeValue<IObject>(object, "children", "true")); // {"name": "Patric", "surname": "Swon", "age": 24, "gender": "Male", "children": false}
