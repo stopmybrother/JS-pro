@@ -18,13 +18,8 @@ let obj: IObject = {
 let str: string = "name";
 let strNotKey: string = "namee";
 
-function showValue<T extends Record<string, any>> (obj: T, str: string): keyof T | T {
-    for (let key in obj) {
-        if (key === str) {
-            return obj[key];
-        }
-    }
-    return obj;
+function showValue<T extends Record<string, any>, K extends string> (obj: T, str: K): keyof T | boolean {
+    return str in obj ? obj[str] : false;
 };
-console.log(showValue<IObject>(obj, str)); // "Jenna" 
-console.log(showValue<IObject>(obj, strNotKey)); // "This key is not found." 
+console.log(showValue<IObject, any>(obj, str)); // "Jenna" 
+console.log(showValue<IObject, any>(obj, strNotKey)); // false 
