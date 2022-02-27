@@ -8,8 +8,9 @@ const string2: string = "ddaaaattta";
 
 const letterCounter = (str: string): IObj => {
     return str.split("").reduce((prev: IObj, item: string) => {
-        return prev[item] ? prev[item]++ : prev[item] = 1, prev;
+        return prev[item] ? prev[item] = prev[item] + 1 : prev[item] = 1, prev;
     }, {})
 }
-console.log(letterCounter(string1)); // {"d": 1, "a": 5, "t": 2} 
+
+console.log(letterCounter(string1)); // {"d": 1, "a": 2, "t": 1} 
 console.log(letterCounter(string2)); // {"d": 2, "a": 5, "t": 3} 
