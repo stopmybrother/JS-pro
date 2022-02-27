@@ -31,7 +31,7 @@ let obj3: IObject3 = {
 let str3: string = "professionn";
 
 
-function checkKey<T extends Record<string, any>, K extends string> (obj: T, str: K) {
+function checkKey<T extends Record<string, any>, K extends string> (obj: T, str: K): boolean {
     return str in obj ? true : false
 };
 
