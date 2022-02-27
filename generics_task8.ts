@@ -15,13 +15,13 @@ let object2: IObject = {
     children: false,
 };
 
-function findKey<T, S extends T[keyof T]> (obj: T, value: S): keyof T | T {
+function findKey<T extends Record<string, any>, S extends T[keyof T]> (obj: T, value: S): keyof T | boolean {
     for (let key in obj) {
         if (obj[key] === value) {
             return key;
         }
     }
-    return obj;
+    return false;
 };
 console.log(findKey<IObject, IObject[keyof IObject]>(object2, 24)); // age
 console.log(findKey<IObject, IObject[keyof IObject]>(object2, "Swon")); // surname
