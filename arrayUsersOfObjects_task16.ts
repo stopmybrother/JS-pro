@@ -47,13 +47,13 @@ console.log(getNamesOfUsers(users)); // "Harry Felton, May Sender, Henry Ford"
 
 //     2. Подсчитать общее количество машин у пользователей !!!!!!!!
 const getNumberOfCars = (array: IUser[]): number => {
-    let newArr: string[] = [...array].reduce((prev, item) => {
+    let numberOfCars: number = [...array].reduce((prev, item) => {
         if (item.cars) {
-            prev.push(item.cars);
+            prev = prev + item.cars.length;
         }
-        return prev.flat();
-    }, [])
-    return (newArr.length);
+        return prev;
+    }, 0);
+    return numberOfCars;
 }
 console.log(getNumberOfCars(users)); // 3
 
@@ -69,7 +69,7 @@ const getUsersWithPets = (array: IUser[]): IUser[] => {
 }
 console.log(getUsersWithPets(users));
 
-//     5. Создать функцию, которая бы принимала массив пользователей и отдавала бы  строку с названиями марок автомобилей через запятую !!!!!!!!!!!
+//     5. Создать функцию, которая бы принимала массив пользователей и отдавала бы  строку с названиями марок автомобилей через запятую
 
 const getCarsOfUsers = (array: IUser[]): string => {
     let strOfUniqCars: string = [...array].reduce((prev, item) => {
