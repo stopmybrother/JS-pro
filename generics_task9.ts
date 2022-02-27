@@ -20,11 +20,9 @@ let array: IOld[] = [
     }
 ];
 
-function pushKeyInObj<A>(array: A[]): INew[] {
-    let newArray: INew[] = [...array].map((item: A , index: number): INew => {
-        item.id = index + 1;
-        return item;
-    })
-    return newArray;
+function pushKeyInObj<A>(array: A[], key: string): (A & { [key: string]: number })[] {
+    return array.map((item: A , index: number) => ({
+        ...item, [key]: index + 1
+    }))
 }
-console.log(pushKeyInObj<IOld>(array)); //[{"name": "Kenny", "id": 1}, {"name": "Brad", "id": 2}, {"name": "Pit", "id": 3}] 
+console.log(pushKeyInObj<IOld>(array, 'id')); //[{"name": "Kenny", "id": 1}, {"name": "Brad", "id": 2}, {"name": "Pit", "id": 3}] 
