@@ -72,14 +72,10 @@ console.log(getUsersWithPets(users));
 //     5. Создать функцию, которая бы принимала массив пользователей и отдавала бы  строку с названиями марок автомобилей через запятую
 
 const getCarsOfUsers = (array: IUser[]): string => {
-    let strOfUniqCars: string = [...array].reduce((prev, item) => {
-            if (item.cars) {
-                prev.push(item.cars);
-            }
-            return prev.flat();
+    return array.reduce<string[]>((prev, item) => {
+            return item?.cars?.length ? [...prev, ...item.cars] : prev;
         }, [])
-        .filter((item: string, index: number, array) => array.indexOf(item) === index)
+        .filter((item: string, index: number, array: string[]) => array.indexOf(item) === index)
         .join(", ")
-    return strOfUniqCars;
 }
 console.log(getCarsOfUsers(users));
