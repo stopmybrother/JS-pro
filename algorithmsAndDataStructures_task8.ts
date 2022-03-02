@@ -1,6 +1,8 @@
 // задача 8 - написать функцию для рекурсивного копирования объекта и всех вложенных структур. Использовать для примера объект следующей структуры
-
-const obj = {
+interface IObj {
+    [key: string]: any;
+}
+const obj: IObj = {
 	a: 1,
     b: 'abc',
     c: true,
@@ -15,7 +17,7 @@ const obj = {
     }
 }
 
-const getCopyOfObj = (obj) => {
+function getCopyOfObj<T extends Record<string, any>> (obj: T): T {
     let newObj = {};
     for (let key in obj) {
         if (typeof obj[key] === "object") {
@@ -27,4 +29,4 @@ const getCopyOfObj = (obj) => {
     return newObj;
 }
 console.log("obj", obj);
-console.log("newObj", getCopyOfObj(obj));
+console.log("newObj", getCopyOfObj<IObj>(obj));
