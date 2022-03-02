@@ -1,23 +1,25 @@
 // 0) протипизировать при помощи дженериков
 
-type TObj = Record<string, unknown>;
+interface IObj {
+    [key: string]: any;
+}
 
-const objOne: TObj = {
+const objOne: IObj = {
     key1: "value1",
     key2: "value2",
 }
-const objTwo: TObj = {
+const objTwo: IObj = {
     key: 8,
 } 
-const objThree: TObj = {}
+const objThree: IObj = {}
 
-function isEmptyObject<T> (obj: T): boolean {
+function isEmptyObject<T extends Record<string, any>> (obj: T): boolean {
     for(let key in obj){
         return false
     }
     return true
 }
 
-console.log(isEmptyObject<TObj>(objOne)); // false
-console.log(isEmptyObject<TObj>(objTwo)); // false
-console.log(isEmptyObject<TObj>(objThree)); // true
+console.log(isEmptyObject<IObj>(objOne)); // false
+console.log(isEmptyObject<IObj>(objTwo)); // false
+console.log(isEmptyObject<IObj>(objThree)); // true
