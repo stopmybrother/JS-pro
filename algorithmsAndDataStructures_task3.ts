@@ -4,8 +4,8 @@
 const arr = [3, 5, 2] // [7, 5, 8]
 
 const getNewArr = (array: number[]): number[] => {
-    let sum: number = [...array].reduce((acc, item) => acc + item, 0)
-    return [...array].map((item) => {
+    let sum: number = array.reduce((acc, item) => acc + item, 0)
+    return array.map((item) => {
         return sum - item;
     })
 }
