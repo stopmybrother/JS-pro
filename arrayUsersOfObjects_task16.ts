@@ -40,32 +40,30 @@ const users: IUser[] = [
 
 //     1. Создать строку из имен пользователей через запятую
 const getNamesOfUsers = (array: IUser[]): string => {
-    let newArr = [...array].map((item: IUser) => item.name);
-    return newArr.join(", ");
+    return array.map((item: IUser) => item.name).join(", ");
 }
 console.log(getNamesOfUsers(users)); // "Harry Felton, May Sender, Henry Ford" 
 
 //     2. Подсчитать общее количество машин у пользователей !!!!!!!!
 const getNumberOfCars = (array: IUser[]): number => {
-    let numberOfCars: number = [...array].reduce((prev, item) => {
+    return array.reduce((prev, item) => {
         if (item.cars) {
             prev = prev + item.cars.length;
         }
         return prev;
     }, 0);
-    return numberOfCars;
 }
 console.log(getNumberOfCars(users)); // 3
 
 //     3. Создать функцию, которая бы принимала массив пользователей и отфильтровывала пользователей на наличие образования
 const getUsersWithAducation = (array: IUser[]): IUser[] => {
-    return [...array].filter((item: IUser) => item.hasEducation);
+    return array.filter((item: IUser) => item.hasEducation);
 }
 console.log(getUsersWithAducation(users));
 
 //     4. Создать функцию, которая бы принимала массив пользователей и отфильтровывала пользователей на наличие животных
 const getUsersWithPets = (array: IUser[]): IUser[] => {
-    return [...array].filter((item: IUser) => item.animals);
+    return array.filter((item: IUser) => item.animals);
 }
 console.log(getUsersWithPets(users));
 
