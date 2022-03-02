@@ -18,8 +18,7 @@ const secondObj: ISecondObj = {
 };
 
 function mergeObjects<A extends Record<string, any>, B extends Record<string, any>> (obj1: A, obj2:B): A & B {
-    let newObj: A & B = Object.assign(obj1, obj2);
-    return newObj;
+    return Object.assign(obj1, obj2);
 }
 
 console.log(mergeObjects<IFirstObj, ISecondObj>(firstObj, secondObj));
