@@ -5,13 +5,13 @@
 const array: number[] = [1, 5, 87, 6];
 
 const getSum1 = (array: number[]): number => {
-    return [...array].reduce((acc, item) => acc + item, 0); // 1
+    return array.reduce((acc, item) => acc + item, 0); // 1
 }
 console.log(getSum1(array)); 
 
 const getSum2 = (array: number[]): number => {
     let sum: number = 0; // 1
-    array.forEach((item) => {
+    [...array].forEach((item) => {
         sum += item; // 4
     }); // 1
     return sum; // 1
