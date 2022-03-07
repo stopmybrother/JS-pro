@@ -18,6 +18,7 @@
 // }
 
 const getResponse = async () => {
+    let text = document.getElementById("text");
 	let button = document.getElementById("button");
 
 	const data = {
@@ -25,16 +26,24 @@ const getResponse = async () => {
 	};
 
 	button.addEventListener("click", async (event) => {
-		let response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+		let response = await fetch("https://jsonplaceholder.typicode.com/postss/1");
 
         if (response.status > 199 && response.status < 300) {
             data.post = await response.json();
             
             event.target.style.backgroundColor = "#000";
             event.target.style.color = "#fff";
+
+            text.style.color = "#000";
+            text.style.textAlign = "center";
+            text.innerHTML = `${response.status} - everything is good`
         } else {
             event.target.style.backgroundColor = "#ff0000";
             event.target.style.color = "#fff";
+
+            text.style.color = "#ff0000";
+            text.style.textAlign = "center"
+            text.innerHTML = `${response.status} -  ERROR`
         }
 	});
 };
