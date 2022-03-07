@@ -70,7 +70,7 @@ const deleteObjFromStructureById = (obj, id) => {
                         return deleteObjFromStructureById(item, id);
                     }
                 })
-                .filter((item) => typeof item !== "undefined");
+                .filter((item) => item);
         }
     }
     return newObj;
@@ -101,7 +101,7 @@ const getNewStructure = (structure, id, obj) => {
             newStructure[key] = structure[key].push(obj);
         }
         if (structure.id !== id && key === "children") {
-            newStructure[key] = structure[key]
+            newStructure[key] = [...structure[key]]
                 .map((item) => {
                     return getNewStructure(item, id, obj);                    
                 })
@@ -113,5 +113,6 @@ const getNewStructure = (structure, id, obj) => {
 }
 
 console.log(getNewStructure(optionsList, "22-option-list", newObj)); //okay
+console.log(optionsList) // mutation
 
 
