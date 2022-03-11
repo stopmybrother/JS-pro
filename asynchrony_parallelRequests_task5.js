@@ -58,10 +58,11 @@ const createGroupParallelRequests = async (array, numb) => {
     }
 
     newArr.forEach(async (item) => {
-        await Promise.all(item.map(async (item) => {
+        item.map(async (item, index, array) => {
             item = await (await fetch(item)).json();
+            await Promise.all(array);
             data.result.push(item);
-        }));
+        });
     });
     console.log("data", data);
 }
