@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Raleway";
+}
+body {
+    background-color: rgb(159, 226, 204);
+}
+button {
+    display: block;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+.container {
+    margin: 0 auto;
+    padding: 0 16px;
+    max-width: 1440px;
+    width: 100%;
+}
+.wrapper {
+    padding: 100px 0;
+    background-color: rgb(159, 226, 204);
+    &__item {
+        padding: 20px 0;
+        // background-color: azure;
+    }
+    &__button {
+        margin: 0 auto;
+        padding: 20px 10px;
+        max-width: 700px;
+        width:  100%;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 28px;
+        border-radius: 15px;
+        box-shadow: 0 1px 2px 0 rgb(26, 115, 232 / 45%), 0 1px 1px 1px rgb(26, 115, 232 / 30%);
+        background-color: rgb(95, 167, 131);
+        transition: all .2s linear;
+        &:hover {
+            box-shadow: 0 1px 2px 0 rgb(26, 115, 232 / 45%), 0 1px 3px 1px rgb(26, 115, 232 / 30%);
+            background-color: rgb(75, 161, 118);
+        }
+        &:active {
+            box-shadow: 0 1px 2px 0 rgb(26, 115, 232 / 45%), 0 2px 6px 2px rgb(26, 115, 232 / 30%);
+            background-color: rgb(95, 167, 131);
+        }
+    }
+}
